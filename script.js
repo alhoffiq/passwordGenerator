@@ -36,17 +36,55 @@ function generatePassword() {
   let numbers = confirm("Should there be numbers?");
   let special = confirm("Should there be special characters?");
 
-
-  let password = ""
-
-
-
-
+  let password = getCode(length, caps, numbers, special);
 
   return password;
 }
 
 // Main Process
+  function getCharacters(charSet, length) { // Makes the password 1 letter at a time from the given array of characters until specified length is reached
+    let code = "";
+    for (let i = 0; i < length ; i++) { 
+      code = code + charSet[Math.floor(Math.random() * charSet.length)];
+      console.log(code);    
+    }
+    return code;
+  }
+
+  function getCode(length, caps, numbers, special) { // User wants only lowercase letters
+    if (!caps && !numbers && !special) {
+      let code = getCharacters(cns, length);
+      return code;
+    }
+    else if (caps && !numbers && !special) { // User wants uppercase letters as well as lowercase letters
+      let code = getCharacters(Cns, length);
+      return code;
+    }
+    else if (!caps && numbers && !special) { // User wants numbers as well
+      let code = getCharacters(cNs, length);
+      return code;
+    }
+    else if (!caps && !numbers && special) { // User wants special characters as well
+      let code = getCharacters(cnS, length);
+      return code;
+    }
+    else if (caps && numbers && !special) { // User wants uppercase letters and numbers as well
+      let code = getCharacters(CNs, length);
+      return code;
+    }
+    else if (!caps && numbers && special) { // User wants numbers and special characters as well
+      let code = getCharacters(cNS, length);
+      return code;
+    }
+    else if (caps && !numbers && special) { // User wants uppercase and special characters as well
+      let code = getCharacters(CnS, length);
+      return code;
+    }
+    else { // User wants all lowercase and uppercase letters, numbers, and special characters
+      let code = getCharacters(CNS, length);
+      return code;
+    }
+  }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
