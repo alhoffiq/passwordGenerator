@@ -20,15 +20,15 @@ function generatePassword() {
   let length = prompt("What is your desired password length? (Between 8 and 128)");
   if (length < 8 || length > 128 || isNaN(length)) { // Make sure user entered a valid input before continuing
     alert("The value you entered is not a number between 8 and 128")
+    return "Bad input!";
   }
-  else {
     let caps = confirm("Should there be capital letters?");
     let numbers = confirm("Should there be numbers?");
     let special = confirm("Should there be special characters?");
-  }
+  
 
   // Password is currently blank! We need to make a better one
-  let password = "";
+  let password = length + " " + "caps: " + caps + " " + "numbers: " + numbers + " " + "special: " + special;
 
 
 
